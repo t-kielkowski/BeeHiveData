@@ -1,5 +1,4 @@
 <resources>
-    <string name="app_name">MPAndroidChart</string>
     <string name="temperature">Temperature</string>
-    <string name="moisture">moisture</string>
+    <string name="moisture">Moisture</string>
 </resources>
