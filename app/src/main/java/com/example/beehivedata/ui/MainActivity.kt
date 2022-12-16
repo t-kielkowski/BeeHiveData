@@ -12,14 +12,12 @@ import com.example.beehivedata.network.BeehiveDataRetriever
 import com.github.mikephil.charting.charts.LineChart
 
 class MainActivity : AppCompatActivity() {
-
     private val dataRetriever: BeehiveDataRetriever = BeehiveDataRetriever()
     private val chartPresenter: ChartPresenter = ChartPresenter()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
         udpateSpinnerList()
     }
 
