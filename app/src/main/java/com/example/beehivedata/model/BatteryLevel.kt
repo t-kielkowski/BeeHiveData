@@ -1,4 +1,4 @@
-package com.example.retrofitsample.model
+package com.example.beehivedata.model
 
 class BatteryLevel(
     var batteryLevel: String,

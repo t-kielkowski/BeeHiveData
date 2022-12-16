@@ -1,9 +1,9 @@
-package com.example.retrofitsample.network
+package com.example.beehivedata.network
 
-import com.example.retrofitsample.model.BatteryLevel
-import com.example.retrofitsample.model.Moisture
-import com.example.retrofitsample.model.Temperature
-import com.example.retrofitsample.model.Weight
+import com.example.beehivedata.model.BatteryLevel
+import com.example.beehivedata.model.Moisture
+import com.example.beehivedata.model.Temperature
+import com.example.beehivedata.model.Weight
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.util.*

@@ -1,6 +1,6 @@
-package com.example.retrofitsample.chart
+package com.example.beehivedata.chart
 
-import com.example.retrofitsample.model.Temperature
+import com.example.beehivedata.model.Temperature
 import com.github.mikephil.charting.animation.Easing
 import com.github.mikephil.charting.charts.LineChart
 import com.github.mikephil.charting.components.AxisBase

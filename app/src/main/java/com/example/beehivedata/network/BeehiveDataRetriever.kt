@@ -1,8 +1,8 @@
-package com.example.retrofitsample.network
+package com.example.beehivedata.network
 
-import com.example.retrofitsample.model.Moisture
-import com.example.retrofitsample.model.Temperature
-import com.example.retrofitsample.model.Weight
+import com.example.beehivedata.model.Moisture
+import com.example.beehivedata.model.Temperature
+import com.example.beehivedata.model.Weight
 import kotlinx.coroutines.async
 import kotlinx.coroutines.runBlocking
 

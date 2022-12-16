@@ -1,4 +1,4 @@
-package com.example.retrofitsample
+package com.example.beehivedata
 
 import org.junit.Test
 

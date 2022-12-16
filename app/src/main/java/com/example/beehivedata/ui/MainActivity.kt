@@ -1,4 +1,4 @@
-package com.example.retrofitsample.ui
+package com.example.beehivedata.ui
 
 import android.os.Bundle
 import android.view.View
@@ -6,9 +6,9 @@ import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Spinner
 import androidx.appcompat.app.AppCompatActivity
-import com.example.retrofitsample.R
-import com.example.retrofitsample.chart.ChartPresenter
-import com.example.retrofitsample.network.BeehiveDataRetriever
+import com.example.beehivedata.R
+import com.example.beehivedata.chart.ChartPresenter
+import com.example.beehivedata.network.BeehiveDataRetriever
 import com.github.mikephil.charting.charts.LineChart
 
 class MainActivity : AppCompatActivity() {
