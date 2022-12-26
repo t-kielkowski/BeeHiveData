@@ -1,6 +1,6 @@
 package com.example.beehivedata.model
 
 class BatteryLevel(
-    var batteryLevel: String,
-    var readingTime: String
+    var batteryLevel:  ArrayList<String>,
+    var readingTime:  ArrayList<String>
 )

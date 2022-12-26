@@ -1,6 +1,6 @@
 package com.example.beehivedata.model
 
 class Weight (
-    var weight : String,
-    var readingTime : String
+    var weight :  ArrayList<String>,
+    var readingTime :  ArrayList<String>
 )

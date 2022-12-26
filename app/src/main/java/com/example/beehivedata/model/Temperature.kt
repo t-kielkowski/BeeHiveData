@@ -1,6 +1,6 @@
 package com.example.beehivedata.model
 
 class Temperature (
-    var temperature : String,
-    var readingTime : String
+    var temperature : ArrayList<String>,
+    var readingTime : ArrayList<String>
     )

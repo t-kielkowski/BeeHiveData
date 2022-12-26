@@ -17,26 +17,26 @@ interface ApiEndPoint {
         @Query("id") id: String,
         @Query("dateFrom") dateFrom: String?,
         @Query("dateTo") dateTo: String?
-    ): ArrayList<Temperature>
+    ): Temperature
 
     @GET("/api/Beehive/moisture")
     suspend fun getBeehiveMois(
         @Query("id") id: String,
         @Query("dateFrom") dateFrom: String?,
         @Query("dateTo") dateTo: String?
-    ): ArrayList<Moisture>
+    ): Moisture
 
     @GET("/api/Beehive/weight")
     suspend fun getBeehiveWeight(
         @Query("id") id: String,
         @Query("dateFrom") dateFrom: String?,
         @Query("dateTo") dateTo: String?
-    ): ArrayList<Weight>
+    ): Weight
 
     @GET("/api/Beehive/temperature")
     suspend fun getBeehiveBatteryLevel(
         @Query("id") id: String,
         @Query("dateFrom") dateFrom: String?,
         @Query("dateTo") dateTo: String?
-    ): ArrayList<BatteryLevel>
+    ): BatteryLevel
 }

@@ -29,17 +29,17 @@ class ApiAccess() {
         return networkInterface.getBeehiveList()
     }
 
-    suspend fun getBeehiveTemp(id: String, dateFrom: String? = null, dateTo: String? = null) : ArrayList<Temperature> {
+    suspend fun getBeehiveTemp(id: String, dateFrom: String? = null, dateTo: String? = null) : Temperature {
         return networkInterface.getBeehiveTemp(id, dateFrom, dateTo)
     }
 
-    suspend fun getBeehiveMois(id: String, dateFrom: String? = null, dateTo: String? = null) : ArrayList<Moisture> {
+    suspend fun getBeehiveMois(id: String, dateFrom: String? = null, dateTo: String? = null) : Moisture {
         return networkInterface.getBeehiveMois(id, dateFrom, dateTo)
     }
-    suspend fun getBeehiveWeight(id: String, dateFrom: String? = null, dateTo: String? = null) : ArrayList<Weight> {
+    suspend fun getBeehiveWeight(id: String, dateFrom: String? = null, dateTo: String? = null) : Weight {
         return networkInterface.getBeehiveWeight(id, dateFrom, dateTo)
     }
-    suspend fun getBeehiveBatteryLevel(id: String, dateFrom: String? = null, dateTo: String? = null) : ArrayList<BatteryLevel> {
+    suspend fun getBeehiveBatteryLevel(id: String, dateFrom: String? = null, dateTo: String? = null) : BatteryLevel {
         return networkInterface.getBeehiveBatteryLevel(id, dateFrom, dateTo)
     }
 }

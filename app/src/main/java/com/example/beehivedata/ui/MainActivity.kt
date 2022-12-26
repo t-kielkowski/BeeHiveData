@@ -27,7 +27,7 @@ class MainActivity : AppCompatActivity() {
 
         var listOfBeeHives: ArrayAdapter<String> =
             ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, beeList)
-        val spinner: Spinner = findViewById(R.id.spinner)
+        val spinner: Spinner = findViewById(R.id.beeList)
 
         spinner.adapter = listOfBeeHives
         spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
