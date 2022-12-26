@@ -1,15 +1,104 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/background">
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline50"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.5" />
+
+    <ImageView
+        android:id="@+id/apiaryPhoto"
+        android:layout_width="200dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="50dp"
+        android:contentDescription="@string/apiary"
+        android:scaleType="fitXY"
+        app:layout_constraintBottom_toTopOf="@+id/beeList"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/logo" />
 
     <Spinner
-        android:id="@+id/spinner"
-        android:layout_width="match_parent"
+        android:id="@+id/beeList"
+        android:layout_width="150dp"
         android:layout_height="50dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_marginBottom="25dp"
+        android:contentDescription="Select BeeHive"
+        app:layout_constraintBottom_toTopOf="@+id/guideline50"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/apiaryPhoto" />
 
+    <RadioGroup
+        android:id="@+id/radioSensorType"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_60sdp"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@+id/btn_Select"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/beeList">
+
+        <RadioButton
+            android:id="@+id/radBtnTemp"
+            android:layout_width="@dimen/_60sdp"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="@dimen/_30sdp"
+            android:background="@drawable/radio_button"
+            android:button="@android:color/transparent"
+            android:checked="true"
+            android:drawableTop="@drawable/radio_temp" />
+
+        <RadioButton
+            android:id="@+id/radBtnMois"
+            android:layout_width="@dimen/_60sdp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="@drawable/radio_button"
+            android:button="@android:color/transparent"
+            android:drawableTop="@drawable/radio_humi"  />
+
+        <RadioButton
+            android:id="@+id/radBtnWeig"
+            android:layout_width="@dimen/_60sdp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/_30sdp"
+            android:background="@drawable/radio_button"
+            android:button="@android:color/transparent"
+            android:drawableTop="@drawable/radio_weight" />
+    </RadioGroup>
+
+    <FrameLayout
+        android:id="@+id/btn_Select"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/gradient_back"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/radioSensorType">
+
+        <com.google.android.material.button.MaterialButton
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/shape_front"
+            android:drawableLeft="@drawable/button_select"
+            android:fontFamily="@font/anton"
+            android:textColor="@color/buttonText"
+            android:text="Wykres"/>
+    </FrameLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
