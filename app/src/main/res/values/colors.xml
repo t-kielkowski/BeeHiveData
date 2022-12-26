@@ -7,6 +7,12 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="red">#FF0000</color>
-    <color name="blue">#0000FF</color>
+    <color name="beehiveBlue">#87CEEB</color>
+    <color name="beehiveBlueWithOpacity">#9987CEEB</color>
+    <color name="gold">#ebbc0c</color>
+    <color name="background">#E6E6E6</color>
+    <color name="radBtnBorder">#649dad</color>
+    <color name="radBtnChecked">#a7c7d0</color>
+    <color name="buttonText">#4d8291</color>
+    <color name="gradientStart">#82a7b2</color>
 </resources>
