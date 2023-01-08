@@ -18,6 +18,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".ui.LineChartWeight" />
+        <activity android:name=".ui.LineChartTemp" />
+        <activity android:name=".ui.LineChartMoisture" />
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
