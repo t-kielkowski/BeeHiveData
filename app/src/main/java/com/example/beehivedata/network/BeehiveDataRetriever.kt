@@ -18,11 +18,12 @@ class BeehiveDataRetriever {
                 beehiveList = fetchData.await()
             }
         }
+
         return beehiveList
     }
 
-    fun fetchBeehiveTemp(id: String): ArrayList<Temperature>? {
-        var temp: ArrayList<Temperature>? = null
+    fun fetchBeehiveTemp(id: String): Temperature? {
+        var temp: Temperature? = null
 
         runBlocking {
             val fetchData = async { apiAccess.getBeehiveTemp(id) }
@@ -33,8 +34,8 @@ class BeehiveDataRetriever {
         return temp
     }
 
-    fun fetchBeehiveMois(id: String): ArrayList<Moisture>? {
-        var moisture: ArrayList<Moisture>? = null
+    fun fetchBeehiveMois(id: String): Moisture? {
+        var moisture: Moisture? = null
 
         runBlocking {
             val fetchData = async { apiAccess.getBeehiveMois(id) }
@@ -45,8 +46,8 @@ class BeehiveDataRetriever {
         return moisture
     }
 
-    fun fetchBeehiveWeight(id: String): ArrayList<Weight>? {
-        var weight: ArrayList<Weight>? = null
+    fun fetchBeehiveWeight(id: String): Weight? {
+        var weight: Weight? = null
 
         runBlocking {
             val fetchData = async { apiAccess.getBeehiveWeight(id) }
