@@ -21,7 +21,7 @@ open class LineChartActivity : AppCompatActivity() {
 
         val buttonRight: Button = findViewById(R.id.btnRight)
         buttonRight.text = btnRightName
-        
+
         buttonRight.setOnClickListener {
             startActivity(com.example.beehivedata.chart.createIntent(this, id, btnRightType.toString()))
         }
