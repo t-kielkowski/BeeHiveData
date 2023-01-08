@@ -1,54 +1,54 @@
 package com.example.beehivedata.ui
 
 import android.os.Bundle
-import android.view.View
-import android.widget.AdapterView
-import android.widget.ArrayAdapter
+import android.widget.Button
+import android.widget.RadioGroup
 import android.widget.Spinner
 import androidx.appcompat.app.AppCompatActivity
 import com.example.beehivedata.R
-import com.example.beehivedata.chart.ChartPresenter
 import com.example.beehivedata.network.BeehiveDataRetriever
-import com.github.mikephil.charting.charts.LineChart
 
 class MainActivity : AppCompatActivity() {
     private val dataRetriever: BeehiveDataRetriever = BeehiveDataRetriever()
-    private val chartPresenter: ChartPresenter = ChartPresenter()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        udpateSpinnerList()
+
+        updateSpinnerList()
+        setButtonOnClick()
     }
 
-    private fun udpateSpinnerList() {
-
+    private fun updateSpinnerList() {
         val beeList = dataRetriever.fetchBeehiveList()
+        var adapterList = ArrayList<String>()
+        for (beeHive in beeList)
+            adapterList.add(beeHive.replace("_", " "))
 
-        var listOfBeeHives: ArrayAdapter<String> =
-            ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, beeList)
+        val adapter = CustomSpinnerAdapter(
+            this,
+            adapterList
+        )
         val spinner: Spinner = findViewById(R.id.beeList)
+        spinner.adapter = adapter
+    }
 
-        spinner.adapter = listOfBeeHives
-        spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-            override fun onNothingSelected(p0: AdapterView<*>?) {
-            }
+    private fun setButtonOnClick(){
+        val spinner: Spinner = findViewById(R.id.beeList)
+        val drawChartBtn: Button = findViewById(R.id.drawChart);
 
-            override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
-                val id = spinner.selectedItem.toString()
-
-                if (id == "UL_1") {
-                    setContentView(R.layout.temp_chart)
-
-                    var temp = dataRetriever.fetchBeehiveTemp(id)
-
-                    if (temp != null)
-                    {
-                        var lineChart : LineChart = findViewById(R.id.lineChart)
-                        chartPresenter.drawTempChart(temp, lineChart)
-                    }
-                }
-            }
+        drawChartBtn.setOnClickListener {
+            val (id, chartType) = getIdAndChartType(spinner)
+            startActivity(com.example.beehivedata.chart.createIntent(this, id, chartType))
         }
+    }
+
+    private fun getIdAndChartType(spinner: Spinner): Pair<String, String> {
+        var id = spinner.selectedItem.toString().replace(" ", "_")
+        val selectedId = findViewById<RadioGroup>(R.id.radioSensorType).checkedRadioButtonId;
+        val radioBtn: Button = findViewById(selectedId)
+        val chartType = radioBtn.text.toString()
+
+        return Pair(id, chartType)
     }
 }
