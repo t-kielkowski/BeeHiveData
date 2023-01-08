@@ -1,6 +1,9 @@
 package com.example.beehivedata.chart
 
+import com.example.beehivedata.R
+import com.example.beehivedata.model.Moisture
 import com.example.beehivedata.model.Temperature
+import com.example.beehivedata.model.Weight
 import com.github.mikephil.charting.animation.Easing
 import com.github.mikephil.charting.charts.LineChart
 import com.github.mikephil.charting.components.AxisBase
@@ -12,33 +15,68 @@ import com.github.mikephil.charting.data.LineDataSet
 import com.github.mikephil.charting.formatter.IndexAxisValueFormatter
 import com.github.mikephil.charting.interfaces.datasets.ILineDataSet
 
-class ChartPresenter  {
+class ChartPresenter {
 
-    fun drawTempChart(temperature: ArrayList<Temperature>, lineChart : LineChart) {
+    fun drawWeightChart(weightData: Weight, lineChart: LineChart) {
+        var index = 0f
+        var readingDate: MutableList<String> = mutableListOf()
+        var weight = ArrayList<Entry>()
+
+        for (reading in weightData.readingTime)
+            readingDate.add(getXAxisValue(reading))
+
+        for (reading in weightData.weight)
+            weight.add(Entry(index++, reading.toFloat()))
+
+        setUpLineChart(readingDate, lineChart)
+        setDataToLineChart(weight, "Weight", lineChart)
+    }
+
+    fun drawTempChart(temperatureData: Temperature, lineChart: LineChart) {
         var index = 0f
         var readingDate: MutableList<String> = mutableListOf()
         var temp = ArrayList<Entry>()
 
-        for (reading in temperature)
-            readingDate.add(GetXAxisValue(reading))
+        for (reading in temperatureData.readingTime)
+            readingDate.add(getXAxisValue(reading))
 
-        for (reading in temperature)
-            temp.add(Entry(index++, reading.temperature.toFloat()))
+        for (reading in temperatureData.temperature)
+            temp.add(Entry(index++, reading.toFloat()))
 
         setUpLineChart(readingDate, lineChart)
         setDataToLineChart(temp, "Temperature", lineChart)
     }
 
-    private fun GetXAxisValue(reading: Temperature) : String{
-        val splitResult = reading.readingTime.split(' ')
-        return splitResult[0].substring(IntRange(0,4)) + " " + splitResult[1].substring(IntRange(0, 4))
+    fun drawMoistureChart(moistureData: Moisture, lineChart: LineChart) {
+        var index = 0f
+        var readingDate: MutableList<String> = mutableListOf()
+        var mois = ArrayList<Entry>()
+
+        for (reading in moistureData.readingTime)
+            readingDate.add(getXAxisValue(reading))
+
+        for (reading in moistureData.moisture)
+            mois.add(Entry(index++, reading.toFloat()))
+
+        setUpLineChart(readingDate, lineChart)
+        setDataToLineChart(mois, "Moisture", lineChart)
     }
 
-    private fun setUpLineChart(readingDate: List<String>, lineChart : LineChart) {
+
+    private fun getXAxisValue(readingTime: String): String {
+        val splitResult = readingTime.split(' ')
+        return splitResult[0].substring(IntRange(0, 4)) + " " + splitResult[1].substring(
+            IntRange(
+                0,
+                4
+            )
+        )
+    }
+
+    private fun setUpLineChart(readingDate: List<String>, lineChart: LineChart) {
         with(lineChart) {
             animateX(1200, Easing.EaseInSine)
             description.isEnabled = false
-
             xAxis.setDrawGridLines(true)
             xAxis.position = XAxis.XAxisPosition.BOTTOM
             xAxis.granularity = 1F
@@ -56,24 +94,26 @@ class ChartPresenter  {
         }
     }
 
-    private fun setDataToLineChart(data: ArrayList<Entry>, label: String, lineChart : LineChart) {
+    private fun setDataToLineChart(data: ArrayList<Entry>, label: String, lineChart: LineChart) {
 
         val chart = LineDataSet(data, label)
-        chart.setDrawFilled(true)
+        chart.setDrawCircles(false)
+        chart.mode = LineDataSet.Mode.HORIZONTAL_BEZIER
+        chart.valueTextSize = 11f
+        chart.valueTextColor = R.color.radBtnChecked
         chart.lineWidth = 3f
-        chart.valueTextSize = 15f
-        chart.mode = LineDataSet.Mode.CUBIC_BEZIER
-        //chart.color = ContextCompat.getColor(this, R.color.red)
-        //chart.valueTextColor = ContextCompat.getColor(this, R.color.red)
-        //chart.enableDashedLine(20F, 10F, 0F)
+        chart.color = R.color.lineChartBackground
+        chart.setDrawFilled(true)
+        //chart.fillColor =  R.color.lineChartBackground
+        //chart.fillAlpha = 80
+
         val dataSet = ArrayList<ILineDataSet>()
         dataSet.add(chart)
         val lineData = LineData(dataSet)
-
         lineChart.data = lineData
         lineChart.invalidate()
 
-        if(data.size>15)
+        if (data.size > 15)
             lineChart.setVisibleXRange(5f, 15f)
 
         lineChart.moveViewToX((data.size).toFloat())
