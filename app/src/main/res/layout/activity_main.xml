@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/background">
@@ -26,12 +25,16 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/logo" />
 
-    <Spinner
+    <androidx.appcompat.widget.AppCompatSpinner
         android:id="@+id/beeList"
-        android:layout_width="150dp"
+        android:layout_width="@dimen/_130sdp"
         android:layout_height="50dp"
+        android:layout_centerVertical="true"
+        android:layout_gravity="center"
         android:layout_marginBottom="25dp"
+        android:background="@android:color/transparent"
         android:contentDescription="Select BeeHive"
+        android:gravity="center"
         app:layout_constraintBottom_toTopOf="@+id/guideline50"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
@@ -58,6 +61,8 @@
             android:background="@drawable/radio_button"
             android:button="@android:color/transparent"
             android:checked="true"
+            android:text="@string/radio_temp"
+            android:textColor="@android:color/transparent"
             android:drawableTop="@drawable/radio_temp" />
 
         <RadioButton
@@ -67,7 +72,9 @@
             android:layout_gravity="center"
             android:background="@drawable/radio_button"
             android:button="@android:color/transparent"
-            android:drawableTop="@drawable/radio_humi"  />
+            android:text="@string/radio_mois"
+            android:textColor="@android:color/transparent"
+            android:drawableTop="@drawable/radio_humi" />
 
         <RadioButton
             android:id="@+id/radBtnWeig"
@@ -76,6 +83,8 @@
             android:layout_marginLeft="@dimen/_30sdp"
             android:background="@drawable/radio_button"
             android:button="@android:color/transparent"
+            android:text="@string/radio_wieght"
+            android:textColor="@android:color/transparent"
             android:drawableTop="@drawable/radio_weight" />
     </RadioGroup>
 
@@ -92,13 +101,14 @@
 
         <com.google.android.material.button.MaterialButton
             style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-            android:layout_width="wrap_content"
+            android:id="@+id/drawChart"
+            android:layout_width="@dimen/_90sdp"
             android:layout_height="wrap_content"
             android:background="@drawable/shape_front"
             android:drawableLeft="@drawable/button_select"
             android:fontFamily="@font/anton"
-            android:textColor="@color/buttonText"
-            android:text="Wykres"/>
+            android:text="Wykres"
+            android:textColor="@color/buttonText" />
     </FrameLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
