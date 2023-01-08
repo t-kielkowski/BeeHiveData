@@ -3,4 +3,7 @@
     <string name="moisture">Moisture</string>
     <string name="apiary">Pasieka</string>
     <string name="Am_title">System Monitoringu Pasieki</string>
+    <string name="radio_temp">Temperature</string>
+    <string name="radio_mois">Moisture</string>
+    <string name="radio_wieght">Weight</string>
 </resources>

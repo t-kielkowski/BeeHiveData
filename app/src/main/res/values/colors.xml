@@ -15,4 +15,5 @@
     <color name="radBtnChecked">#a7c7d0</color>
     <color name="buttonText">#4d8291</color>
     <color name="gradientStart">#82a7b2</color>
+    <color name="lineChartBackground">#649dad</color>
 </resources>
